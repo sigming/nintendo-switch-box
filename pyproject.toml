@@ -1,0 +1,8 @@
+[project]
+name = 'nintendo-switch-box'
+version = '0.1.0'
+description = 'Update a pinned gist to contain Nintendo Switch Game stats'
+requires-python = '>=3.12'
+dependencies = [
+    'requests',
+]

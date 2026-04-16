@@ -9,11 +9,11 @@
 
 2. Create a new **public** GitHub Gist at <https://gist.github.com/>.
 
-3. Go to the <https://github.com/settings/tokens/new> page to create a token, just grant the **gist** permission.
+3. Go to <https://github.com/settings/tokens/new> to create a token with only the **gist** permission.
 
-4. Run `python src/get_session_token.py` to get session token.
+4. Run `python src/get_session_token.py` to obtain your session token.
 
-5. Go to the repository **Settings > Secrets**, Add the following environment variables:
-   - NINTENDO_SESSION_TOKEN: The session token you got from the previous step.
-   - GH_TOKEN: The token you created in the previous step.
-   - GIST_ID: The ID portion from your gist URL: `https://gist.github.com/your_name/<GIST_ID>`.
+5. Go to your fork's **Settings > Secrets** and add the following environment variables:
+   - `NINTENDO_SESSION_TOKEN`: The session token obtained in the previous step.
+   - `GH_TOKEN`: The token created in step 3.
+   - `GIST_ID`: The ID portion of your gist URL: `https://gist.github.com/your_name/<GIST_ID>`.
