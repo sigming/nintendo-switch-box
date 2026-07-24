@@ -6,8 +6,6 @@
 
 ## Setup
 
-You don't need to fork this repository. Create your own repository and add a workflow that uses this action.
-
 1. Create a new repository (public or private) to run the action. It stores your Nintendo Switch stats and holds the required secrets.
 
 2. Create a new **public** GitHub Gist at <https://gist.github.com/>.
