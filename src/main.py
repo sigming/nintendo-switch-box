@@ -2,7 +2,7 @@ import os
 import re
 
 from nintendo import NintendoClient
-from utils import convert_play_duration, update_gist, truncate_strings
+from utils import clean_game_name, convert_play_duration, update_gist, truncate_strings
 
 
 def contains_japanese(text):
@@ -46,7 +46,7 @@ if __name__ == '__main__':
             title_en = client.get_game_title(i['titleId'], region='US').get('name')
             if title_en:
                 record['title'] = title_en
-        record['title'] = record['title'].replace('™', '').strip()
+        record['title'] = clean_game_name(record['title'])
 
         show_records.append(record)
     show_records.sort(key=lambda x: x['played_minutes'], reverse=True)

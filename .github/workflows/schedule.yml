@@ -7,9 +7,9 @@ jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v7
       - name: Update gist
-        uses: Swilder-M/nintendo-switch-box@master
+        uses: ./
         env:
           NINTENDO_SESSION_TOKEN: ${{ secrets.NINTENDO_SESSION_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

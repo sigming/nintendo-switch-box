@@ -7,6 +7,8 @@ import urllib.parse
 
 import requests
 
+REQUEST_TIMEOUT = 30
+
 
 # https://github.com/raycast/extensions/blob/main/extensions/switch-game-play-history/src/helpers/nintendo.ts
 # https://github.com/frozenpandaman/splatnet2statink/blob/master/iksm.py
@@ -36,7 +38,7 @@ class NintendoClient:
             'Authorization': f'Bearer {access_token}',
             'gentry-locale': 'en-US'  # ja-JP
         }
-        r = requests.get(api, headers=headers)
+        r = requests.get(api, headers=headers, timeout=REQUEST_TIMEOUT)
         if r.status_code != 200:
             print(f'Failed to get play histories. Status: {r.status_code}, Response: {r.text}')
             return None
@@ -45,7 +47,7 @@ class NintendoClient:
     @staticmethod
     def get_game_title(title_id, region='US'):
         url = f'https://ec.nintendo.com/apps/{title_id}/{region}'
-        r = requests.get(url, allow_redirects=True)
+        r = requests.get(url, allow_redirects=True, timeout=REQUEST_TIMEOUT)
         if r.status_code != 200:
             return {}
 
@@ -81,7 +83,7 @@ class NintendoClient:
         }
 
         url = 'https://accounts.nintendo.com/connect/1.0.0/api/token'
-        r = requests.post(url, headers=app_head, json=body)
+        r = requests.post(url, headers=app_head, json=body, timeout=REQUEST_TIMEOUT)
 
         try:
             container = json.loads(r.text)
@@ -140,7 +142,7 @@ class NintendoClient:
 
         url = 'https://accounts.nintendo.com/connect/1.0.0/api/session_token'
 
-        r = requests.post(url, headers=app_head, data=body)
+        r = requests.post(url, headers=app_head, data=body, timeout=REQUEST_TIMEOUT)
         try:
             container = json.loads(r.text)
             session_token = container['session_token']
